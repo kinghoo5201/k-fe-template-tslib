@@ -1,0 +1,64 @@
+{
+  "name": "_IRIM_PROJECT_NAME_",
+  "version": "0.1.0",
+  "description": "_IRIM_DESCRIPTION_",
+  "repository": {
+    "type": "git",
+    "url": "_IRIM_GIT_"
+  },
+  "main": "./lib/index.js",
+  "module": "./esm/index.js",
+  "types": "./types/index.d.ts",
+  "distName": "_IRIM_PROJECT_NAME_",
+  "scripts": {
+    "lint": "eslint --fix --ext .js,.ts ./src",
+    "build:lib": "tsc --outDir lib --module CommonJS --target ES2018",
+    "build:esm": "tsc --outDir esm --module ES6 --target ES2018",
+    "build": "npm run build:lib && npm run build:esm",
+    "prebuild": "npm run lint && npm run clear",
+    "clear": "rm -rf esm && rm -rf lib && rm -rf types",
+    "test": "jest --config=config/jest.config.js",
+    "test:watch": "jest --config=config/jest.config.js --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "author": {
+    "name": "_IRIM_AUTHOR_",
+    "email": "_IRIM_EMAIL_"
+  },
+  "maintainers": [
+    {
+      "name": "_IRIM_AUTHOR_",
+      "email": "_IRIM_EMAIL_"
+    }
+  ],
+  "license": "BSD-3-Clause",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1",
+    "@babel/preset-typescript": "^7.13.0",
+    "@commitlint/cli": "~12.1.1",
+    "@commitlint/config-conventional": "~12.1.1",
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "~4.22.1",
+    "@typescript-eslint/parser": "~4.22.1",
+    "eslint": "~7.25.0",
+    "husky": "^4.3.6",
+    "jest": "^26.6.3",
+    "typescript": "^4.2.4"
+  },
+  "peerDependencies": {},
+  "keywords": [
+    "_IRIM_PROJECT_NAME_"
+  ],
+  "files": [
+    "esm",
+    "lib"
+  ]
+}
